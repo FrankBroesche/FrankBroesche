@@ -2,21 +2,21 @@
 .SYNOPSIS
 	(Enter synopsis)
 .NOTES
-	|Author|: Frank Broesche|
-	|LinkedIn|: linkedin.com/in/frank-broesche|
-	|GitHub|: FrankBroesche| 
-	Date Created: 05/02/2025
-	Last Modified: 05/02/2025
-	Version	        : 1.0
-	CVEs	          : N/A
-	Plugin IDs	    : N/A
-	STIG-ID	        : WN10-CC-000370
+	Author         : Frank Broesche
+	LinkedIn       : linkedin.com/in/frank-broesche
+	GitHub         : FrankBroesche
+	Date Created   : 05/02/2025
+	Last Modified  : 05/02/2025
+	Version        : 1.0
+	CVEs           : N/A
+	Plugin IDs     : N/A
+	STIG-ID        : WN10-CC-000370
 
 .TESTED ON
-	Date(s) Tested	:
-	Tested By	      :
-	Systems Tested	: Windows 10
-	PowerShell Ver.	: 
+	Date(s) Tested :
+	Tested By      :
+	Systems Tested : Windows 10
+	PowerShell Ver.: 
 	
 .USAGE
 	(Put usuage instructions here)
