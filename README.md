@@ -4,7 +4,7 @@ This repository highlights my work in vulnerability management as part of my cyb
 
 ## ⚠️ Vulnerability Management Projects
 
-- **[Programmatic Vulnerability Remediations (PowerShell and BASH)](https://github.com/FrankBroesche/FrankBroesche/tree/main)**
+- **[Programmatic Vulnerability Remediations (PowerShell and BASH)](https://github.com/FrankBroesche/FrankBroesche/tree/main/STIG-Scripts)**
 
 <hr/>
 
