@@ -1,4 +1,4 @@
-# <a href="https://www.linkedin.com/in/frankbroesche/">FrankBroesche</a>'s IT and Cybersecurity Project Portfolio 🔐
+# <a href="https://www.linkedin.com/in/frank-broesche/">Frank Broesche</a>'s IT and Cybersecurity Project Portfolio 🔐
 
 This repository highlights my work in vulnerability management as part of my cybersecurity training on Josh Madakor's Cyber Range. The focus here is on identifying, assessing, and remediating vulnerabilities using industry-aligned tools and practices, such as Tenable. I’ve included a link below to the STIG (Security Technical Implementation Guide) implementations I worked on during my internship, which apply hardening techniques to real-world systems.
 
