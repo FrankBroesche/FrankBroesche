@@ -1,0 +1,41 @@
+<#
+.SYNOPSIS
+	(Enter synopsis)
+.NOTES
+	|Author|: Frank Broesche|
+	|LinkedIn|: linkedin.com/in/frank-broesche|
+	|GitHub|: FrankBroesche| 
+	Date Created: 05/02/2025
+	Last Modified: 05/02/2025
+	Version	        : 1.0
+	CVEs	          : N/A
+	Plugin IDs	    : N/A
+	STIG-ID	        : WN10-CC-000370
+
+.TESTED ON
+	Date(s) Tested	:
+	Tested By	      :
+	Systems Tested	: Windows 10
+	PowerShell Ver.	: 
+	
+.USAGE
+	(Put usuage instructions here)
+# Define registry path and key
+$regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
+$keyName = "AllowDomainPINLogon"
+$desiredValue = 0
+
+# Create the key if it doesn't exist
+if (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
+}
+
+# Set the registry value
+$currentValue = Get-ItemProperty -Path $regPath -Name $keyName -ErrorAction SilentlyContinue | Select-Object -ExpandProperty $keyName -ErrorAction SilentlyContinue
+
+if ($null -eq $currentValue -or $currentValue -ne $desiredValue) {
+    Write-Host "Setting $keyName to $desiredValue at $regPath"
+    Set-ItemProperty -Path $regPath -Name $keyName -Value $desiredValue -Type DWord
+} else {
+    Write-Host "$keyName is already set to $desiredValue, no action needed."
+}
