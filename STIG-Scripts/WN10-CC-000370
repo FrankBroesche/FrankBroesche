@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-	(Enter synopsis)
+	This PowerShell script remediates the STIG finding WN10-CC-000370, which requires disabling the use of convenience PIN sign-in on Windows 10 systems.
 .NOTES
 	Author         : Frank Broesche
 	LinkedIn       : linkedin.com/in/frank-broesche
