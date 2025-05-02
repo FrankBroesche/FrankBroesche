@@ -13,13 +13,15 @@
 	STIG-ID        : WN10-CC-000370
 
 .TESTED ON
-	Date(s) Tested :
-	Tested By      :
-	Systems Tested : Windows 10
-	PowerShell Ver.: 
+	Date(s) Tested : 05/02/2025
+	Tested By      : Frank Broesche
+	Systems Tested : Windows 10 Pro
+	PowerShell Ver.: 5.1
 	
 .USAGE
 	(Put usuage instructions here)
+
+
 # Define registry path and key
 $regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
 $keyName = "AllowDomainPINLogon"
