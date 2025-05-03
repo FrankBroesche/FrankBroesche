@@ -1,0 +1,34 @@
+<#
+.SYNOPSIS
+	(Enter synopsis)
+.NOTES
+	Author          : Frank Broesche
+	LinkedIn        : linkedin.com/in/frank-broesche
+	GitHub          : FrankBroesche
+	Date Created    : 05/02/2025
+	Last Modified   : 05/02/2025
+	Version         : 1.0
+	CVEs            : N/A
+	Plugin IDs      : N/A
+	STIG-ID         : WN10-CC-000155
+	
+.TESTED ON
+	Date(s) Tested  : 05/02/2025
+	Tested By       : Frank Broesche
+	Systems Tested  : Windows 10 Pro
+	PowerShell Ver. : 5.1
+#>
+
+# Define the registry path and value to disable Solicited Remote Assistance
+$regPath = "HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services"
+$regValue = "fAllowToGetHelp"
+
+# Check if the registry path exists, if not, create it
+if (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force
+}
+
+# Set the value to 0 to disable Solicited Remote Assistance
+Set-ItemProperty -Path $regPath -Name $regValue -Value 0
+
+Write-Host "Solicited Remote Assistance has been disabled."
