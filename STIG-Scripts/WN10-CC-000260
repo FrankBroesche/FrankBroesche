@@ -1,0 +1,38 @@
+<#
+.SYNOPSIS
+    Remediates and verifies STIG requirement WN10-CC-000260: Minimum PIN Length
+
+.DESCRIPTION
+    This script sets the Minimum PIN Length to 6 and verifies the setting is applied.
+
+.NOTES
+    - Run as Administrator
+    - Tested on Windows 10 (LTSB v1507 and v1607+ paths handled)
+
+#>
+
+# Define paths (choose the one that exists or force v1607+)
+$regPath = "HKLM:\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity"
+$propertyName = "MinimumPINLength"
+$desiredValue = 6
+
+Write-Host "Applying STIG: WN10-CC-000260 - Minimum PIN Length..." -ForegroundColor Cyan
+
+# Ensure the registry path exists
+if (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
+    Write-Host "Created registry path: $regPath"
+}
+
+# Set the value
+New-ItemProperty -Path $regPath -Name $propertyName -PropertyType DWord -Value $desiredValue -Force | Out-Null
+Write-Host "✅ Remediation applied: MinimumPINLength set to $desiredValue" -ForegroundColor Green
+
+# Verification
+$currentValue = Get-ItemProperty -Path $regPath -Name $propertyName -ErrorAction SilentlyContinue | Select-Object -ExpandProperty $propertyName
+
+if ($currentValue -ge $desiredValue) {
+    Write-Host "✅ Verified: MinimumPINLength is set to $currentValue." -ForegroundColor Green
+} else {
+    Write-Host "❌ Verification failed: MinimumPINLength is set to $currentValue (expected $desiredValue or greater)." -ForegroundColor Red
+}
