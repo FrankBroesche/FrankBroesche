@@ -1,0 +1,32 @@
+<#
+.SYNOPSIS
+	(Enter synopsis)
+.NOTES
+	Author          : Frank Broesche
+	LinkedIn        : linkedin.com/in/frank-broesche
+	GitHub          : https://github.com/FrankBroesche
+	Date Created    : 05/05/2025
+	Last Modified   : 05/05/2025
+	Version         : 1.0
+	CVEs            : N/A
+	Plugin IDs      : N/A
+	STIG-ID         : WN10-CC-000110
+	
+.TESTED ON
+	Date(s) Tested  : 05/05/2025
+	Tested By       : Frank Broesche
+	Systems Tested  : Windows 10 Pro
+	PowerShell Ver. : 5.1
+#>
+
+
+Write-Host "Applying STIG: WN10-CC-000110 - Disable printing over HTTP..." -ForegroundColor Cyan
+
+# Create the registry path if it doesn't exist
+New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows NT\Printers" -Force | Out-Null
+
+# Set the required policy value
+New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows NT\Printers" `
+    -Name "DisableHTTPPrinting" -PropertyType DWord -Value 1 -Force | Out-Null
+
+Write-Host "✅ Remediation successful: Printing over HTTP has been disabled." -ForegroundColor Green
