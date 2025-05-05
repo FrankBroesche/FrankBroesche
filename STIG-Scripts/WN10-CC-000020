@@ -1,0 +1,47 @@
+<#
+.SYNOPSIS
+	(Enter synopsis)
+.NOTES
+	Author          : Frank Broesche
+	LinkedIn        : linkedin.com/in/frank-broesche
+	GitHub          : https://github.com/FrankBroesche
+	Date Created    : 05/05/2025
+	Last Modified   : 05/05/2025
+	Version         : 1.0
+	CVEs            : N/A
+	Plugin IDs      : N/A
+	STIG-ID         : WN10-CC-000020
+	
+.TESTED ON
+	Date(s) Tested  : 05/05/2025
+	Tested By       : Frank Broesche
+	Systems Tested  : Windows 10 Pro
+	PowerShell Ver. : 5.1
+#>
+
+
+# WN10-CC-000020 - Disable IPv6 source routing (set to highest protection)
+
+$regPath = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters"
+$regName = "DisableIPSourceRouting"
+$desiredValue = 2
+
+Write-Host "Applying STIG: WN10-CC-000020 - Disable IPv6 Source Routing..." -ForegroundColor Cyan
+
+# Create the key if it doesn't exist
+If (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
+    Write-Host "Created registry path: $regPath" -ForegroundColor Yellow
+}
+
+# Set the desired value
+Set-ItemProperty -Path $regPath -Name $regName -Value $desiredValue -Type DWord
+Write-Host "Set '$regName' to '$desiredValue' at '$regPath'" -ForegroundColor Green
+
+# Confirm the result
+$currentValue = Get-ItemProperty -Path $regPath -Name $regName
+if ($currentValue.$regName -eq $desiredValue) {
+    Write-Host "✅ Remediation successful." -ForegroundColor Green
+} else {
+    Write-Host "❌ Remediation failed." -ForegroundColor Red
+}
