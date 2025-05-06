@@ -1,0 +1,27 @@
+<#
+.SYNOPSIS
+	(Enter synopsis)
+.NOTES
+	Author          : Frank Broesche
+	LinkedIn        : linkedin.com/in/frank-broesche
+	GitHub          : https://github.com/FrankBroesche
+	Date Created    : 05/06/2025
+	Last Modified   : 05/06/2025
+	Version         : 1.0
+	CVEs            : N/A
+	Plugin IDs      : N/A
+	STIG-ID         : WN10-AC-000005
+	
+.TESTED ON
+	Date(s) Tested  : 05/06/2025
+	Tested By       : Frank Broesche
+	Systems Tested  : Windows 10 Pro
+	PowerShell Ver. : 5.1
+#>
+
+# Set account lockout duration to 15 minutes (auto-unlocks after 15 minutes)
+net accounts /lockoutduration:15
+
+# Alternatively, set lockout duration to 0 (requires admin to unlock manually)
+net accounts /lockoutduration:0
+
