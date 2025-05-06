@@ -1,0 +1,23 @@
+<#
+.SYNOPSIS
+	(Enter synopsis)
+.NOTES
+	Author          : Frank Broesche
+	LinkedIn        : linkedin.com/in/frank-broesche
+	GitHub          : https://github.com/FrankBroesche
+	Date Created    : 05/06/2025
+	Last Modified   : 05/06/2025
+	Version         : 1.0
+	CVEs            : N/A
+	Plugin IDs      : N/A
+	STIG-ID         : WN10-CC-000044
+	
+.TESTED ON
+	Date(s) Tested  : 05/06/2025
+	Tested By       : Frank Broesche
+	Systems Tested  : Windows 10 Pro
+	PowerShell Ver. : 5.1
+#>
+
+New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\Network Connections" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\Network Connections" -Name "NC_ShowSharedAccessUI" -Value 0 -Type DWord
